@@ -9,6 +9,12 @@ function findfiles {
 findfiles
 echo "Guess the number of files in the working directory"
 read userinput
+while [[ "$userinput" == "" ]]
+do
+	echo "Enter a valid number"
+	read userinput
+done
+userinput=$(echo $((10#$userinput)))
 while [ $fileshere != $userinput ]
 do
 #Here goes the loop
@@ -26,6 +32,11 @@ do
 	fi
 	echo "Guess the number of files in the working directory"
 	read userinput
+	while [[ "$userinput" == "" ]]
+	do
+		echo "Enter a valid number"
+		read userinput
+	done
 	userinput=$(echo $((10#$userinput)))
 done
 echo "Congratulations! You have entered the correct number of files, here are $fileshere number of files in this directory"
