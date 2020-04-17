@@ -7,7 +7,7 @@ function findfiles {
 findfiles
 echo "Guess the number of files in the working directory"
 read userinput
-while [[ "$userinput" == "" ]]
+while [[ "$userinput" == "" ]] || [[ -n ${userinput//[0-9]/} ]]
 do
 	echo "Enter a valid number"
 	read userinput
@@ -15,7 +15,7 @@ done
 userinput=$(echo $((10#$userinput)))
 while [ $fileshere != $userinput ]
 do
-	if [[ -n ${userinput//[0-9]/} ]] || [[ $userinput -lt 0 ]] || [[ $userinput -gt 9223372036854775807 ]]
+	if [[ -n ${userinput//[0-9]/} ]] || [[ $userinput -gt 9223372036854775807 ]]
 	then
    		echo "Enter a valid number"
 	else
