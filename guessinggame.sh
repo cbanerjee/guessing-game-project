@@ -3,7 +3,7 @@
 #This program contains one function, one loop and one if statement as per the requirements
 function findfiles {
 	fileshere=$(find -mindepth 1 -maxdepth 1 -printf a | wc -c ) 
-	((fileshere--))
+#	((fileshere--))
 }
 #This was the function
 findfiles
