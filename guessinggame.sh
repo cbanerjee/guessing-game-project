@@ -12,7 +12,7 @@ read userinput
 while [ $fileshere != $userinput ]
 do
 #Here goes the loop
-	if [[ -n ${userinput//[0-9]/} ]]
+	if [[ -n ${userinput//[0-9]/} ]] || [[ $userinput -lt 0 ]] || [[ $userinput -gt 9223372036854775807 ]]
 	then
    		echo "Enter a valid number"
 	else
@@ -26,6 +26,7 @@ do
 	fi
 	echo "Guess the number of files in the working directory"
 	read userinput
+	userinput=$(echo $((10#$userinput)))
 done
 echo "Congratulations! You have entered the correct number of files, here are $fileshere number of files in this directory"
 #Here is complete number of lines between 20 and 50
