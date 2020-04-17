@@ -1,9 +1,9 @@
-#!/usr/bin/env bas
+#!/usr/bin/env bash
 #File= guessinggame.sh
-#made by Chunilal Banerjee
 #This program contains one function, one loop and one if statement as per the requirements
 function findfiles {
-	fileshere=$(echo ls -1 | wc -l ) 
+	fileshere=$(find -mindepth 1 -maxdepth 1 -printf a | wc -c ) 
+	fileshere=$fileshere-1
 }
 #This was the function
 findfiles
@@ -12,13 +12,17 @@ read userinput
 while [ $fileshere != $userinput ]
 do
 #Here goes the loop
-
-	if [[ $fileshere -gt $userinput ]]
+	if [[ -n ${userinput//[0-9]/} ]]
 	then
-	#Here goes the if statement
-		echo "You entered $userinput and that is LESS than the actual number"
+   		echo "Enter a valid number"
 	else
-		echo "You entered $userinput and that is GREATER than the actual number"
+		if [[ $fileshere -gt $userinput ]]
+		then
+		#Here goes the if statement
+			echo "You entered $userinput and that is LESS than the actual number"
+		else
+			echo "You entered $userinput and that is GREATER than the actual number"
+		fi
 	fi
 	echo "Guess the number of files in the working directory"
 	read userinput
