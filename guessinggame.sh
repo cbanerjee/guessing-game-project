@@ -2,7 +2,6 @@
 #File= guessinggame.sh
 function findfiles {
 	fileshere=$(find -mindepth 1 -maxdepth 1 -printf a | wc -c ) 
-#	((fileshere--))
 }
 findfiles
 userinput=-53
@@ -26,7 +25,8 @@ do
 	if [[ $fileshere -gt $userinput ]]
 	then
 			echo "You entered $userinput and that is LESS than the actual number"
-	else
+	elif [[ $fileshere -lt $userinput ]]
+	then
 			echo "You entered $userinput and that is GREATER than the actual number"
 	fi
 done
