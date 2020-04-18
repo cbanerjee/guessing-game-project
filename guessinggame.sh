@@ -10,6 +10,7 @@ while [ $fileshere != $userinput ]
 do
 	echo "Guess the number of files in the working directory"
 	read userinput
+	userinput=$(echo $userinput | sed 's/^0*//')
 	while [[ "$userinput" == "" ]] || [[ ${#userinput} -gt 19 ]] || [[ -n ${userinput//[0-9]/} ]] || [[ $userinput -gt 9223372036854775807 ]]
 	do
 		echo "Enter a valid number"
