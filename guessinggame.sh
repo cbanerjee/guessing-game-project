@@ -14,12 +14,13 @@ do
 	do
 		echo "Enter a valid number"
 		read userinput
+		userinput=$(echo $userinput | sed 's/^0*//')
 	done
 	copyinp=$userinput
 	userinput=$(echo $((10#$userinput)))
 	if [[ ${#copyinp} -eq 19 ]] && [[ "$copyinp" != "$userinput" ]]
 	then
-		echo "Value exceeding the 64 gigs, please try again"
+		echo "Value exceeding the 9223372036854775807 limit for signed integers, please try again"
 		continue
 	fi
 	if [[ $fileshere -gt $userinput ]]
