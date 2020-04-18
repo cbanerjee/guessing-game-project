@@ -5,16 +5,17 @@ function findfiles {
 #	((fileshere--))
 }
 findfiles
-echo "Guess the number of files in the working directory"
-read userinput
-while [[ "$userinput" == "" ]] || [[ -n ${userinput//[0-9]/} ]]
-do
-	echo "Enter a valid number"
-	read userinput
-done
-userinput=$(echo $((10#$userinput)))
+userinput=-53
 while [ $fileshere != $userinput ]
 do
+	echo "Guess the number of files in the working directory"
+	read userinput
+	while [[ "$userinput" == "" ]] && [[ ${#userinput} -gt 19 ]]
+	do
+		echo "Enter a valid number"
+		read userinput
+	done
+	userinput=$(echo $((10#$userinput)))
 	if [[ -n ${userinput//[0-9]/} ]] || [[ $userinput -gt 9223372036854775807 ]]
 	then
    		echo "Enter a valid number"
@@ -26,13 +27,5 @@ do
 			echo "You entered $userinput and that is GREATER than the actual number"
 		fi
 	fi
-	echo "Guess the number of files in the working directory"
-	read userinput
-	while [[ "$userinput" == "" ]]
-	do
-		echo "Enter a valid number"
-		read userinput
-	done
-	userinput=$(echo $((10#$userinput)))
 done
 echo "Congratulations! You have entered the correct number of files, here are $fileshere number of files in this directory"
