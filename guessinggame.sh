@@ -10,7 +10,7 @@ while [ $fileshere != $userinput ]
 do
 	echo "Guess the number of files in the working directory"
 	read userinput
-	while [[ "$userinput" == "" ]] && [[ ${#userinput} -gt 19 ]]
+	while [[ "$userinput" == "" ]] || [[ ${#userinput} -gt 19 ]]
 	do
 		echo "Enter a valid number"
 		read userinput
