@@ -17,7 +17,7 @@ do
 	done
 	copyinp=$userinput
 	userinput=$(echo $((10#$userinput)))
-	if [[ ${#copyinp} -eq 19 ]] && [[ "$copyinp" != "$unserinput" ]]
+	if [[ ${#copyinp} -eq 19 ]] && [[ "$copyinp" != "$userinput" ]]
 	then
 		echo "Value exceeding the 64 gigs, please try again"
 		continue
